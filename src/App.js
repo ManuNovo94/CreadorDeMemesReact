@@ -1,10 +1,10 @@
 import "./App.css";
 import { useState } from "react";
-import html2canvas from 'html2canvas'
+import html2canvas from "html2canvas";
 function App() {
   const [linea1, setLinea1] = useState("");
   const [linea2, setLinea2] = useState("");
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
 
   const onChangeLine1 = (valor1) => {
     setLinea1(valor1.target.value);
@@ -17,16 +17,14 @@ function App() {
     setImage(image.target.value);
   };
   const onClickButton = () => {
-   
-    html2canvas(document.querySelector("#meme")).then(canvas => {
-      var img    = canvas.toDataURL("image/png");
+    html2canvas(document.querySelector("#meme")).then((canvas) => {
+      var img = canvas.toDataURL("image/png");
 
-      var link = document.createElement('a');
-      link.download = 'meme.png';
+      var link = document.createElement("a");
+      link.download = "meme.png";
       link.href = img;
       link.click();
-
-  });
+    });
   };
 
   return (
@@ -44,12 +42,12 @@ function App() {
       <button onClick={onClickButton}>Exportar</button>
 
       <div className="meme" id="meme">
-        <spam id='linea1'>{linea1}</spam>
+        <spam id="linea1">{linea1}</spam>
         <br />
-        
-        <img src={"/Image/"+ image+".jpg" }/>
-       
-        <spam id='linea2'>{linea2}</spam>
+
+        <img src={"/Image/" + image + ".jpg"} />
+
+        <spam id="linea2">{linea2}</spam>
       </div>
     </div>
   );
